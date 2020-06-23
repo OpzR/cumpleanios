@@ -1,0 +1,74 @@
+<h4>Formulario Cumpleaños<small></small></h4>
+<hr>
+<form autocomplete="off" (ngSubmit)="guardar(formCumple)" #formCumple="ngForm">
+
+  <div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nombre</label>
+        <input class="form-control" type="text" placeholder="Ej: Oscar" name="nombres"
+          [class.is-invalid]="nombres.invalid && nombres.touched" ngModel required value minlength="3" maxlength="30"
+          #nombres="ngModel" id=nombres>
+        <small *ngIf="nombres.invalid && nombres.touched" class="form-text text-danger">Campo obligatorio</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Apellido</label>
+        <input class="form-control" type="text" placeholder="Ej: Pérez" name="apellido"
+          [class.is-invalid]="apellido.invalid && apellido.touched" ngModel required minlength="3" maxlength="20"
+          #apellido="ngModel" id=apellido>
+        <small *ngIf="apellido.invalid && apellido.touched" class="form-text text-danger">Campo obligatorio</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Fecha Nacimiento</label>
+        <input class="form-control" type="text" placeholder="Ej: 10-06-1984" name="nacimiento"
+          [class.is-invalid]="nacimiento.invalid && nacimiento.touched" ngModel required minlength="10" maxlength="10"
+          #nacimiento="ngModel" id=nacimiento>
+        <small *ngIf="nacimiento.invalid && nacimiento.touched" class="form-text text-danger">Campo obligatorio</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label>&nbsp;</label>
+        <button type="submit" class="btn btn-outline-primary btn-block">
+          Procesar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div>
+  <h4>Resultado<small></small></h4>
+  <hr>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nombre</label>
+      <input class="form-control" disabled type="text" [ngModel]="usuarioResponse.nombres">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Apellido</label>
+      <input class="form-control" disabled type="text" [ngModel]="usuarioResponse.apellido">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Edad</label>
+      <input class="form-control" disabled type="text" [ngModel]="usuarioResponse.edad">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Fecha</label>
+      <input class="form-control" disabled type="text" [ngModel]="usuarioResponse.fecha">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Poema response</label>
+      <textarea class="form-control" disabled rows="6" cols="100" [ngModel]="usuarioResponse.poema">
+      </textarea>
+    </div>
+  </div>
+</div>
